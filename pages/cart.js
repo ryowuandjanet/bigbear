@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useContext } from 'react';
+import React, { useState ,useContext } from 'react';
 import XCircleIcon from '@heroicons/react/24/outline/XCircleIcon';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
@@ -15,24 +15,29 @@ function CartScreen() {
   const {
     cart: { cartItems },
   } = state;
+  const [remark, setRemark] = useState('');
+
+  const handleRemarkChange = (e) => {
+    setRemark(e.target.value);
+  };
   const removeItemHandler = (item) => {
     dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
-  const updateCartHandler = async (item, qty) => {
+  const updateCartHandler = async (item, qty, remark) => {
     const quantity = Number(qty);
     const { data } = await axios.get(`/api/products/${item._id}`);
     if (data.countInStock < quantity) {
       return toast.error('Sorry. Product is out of stock');
     }
-    dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity, remark } });
     toast.success('Product updated in the cart');
   };
   return (
     <Layout title="Shopping Cart">
-      <h1 className="mb-4 text-xl">Shopping Cart</h1>
+      <h1 className="mb-4 text-xl">購物車</h1>
       {cartItems.length === 0 ? (
         <div>
-          Cart is empty. <Link href="/">Go shopping</Link>
+          Cart is empty. <Link href="/">購物去</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
@@ -40,10 +45,11 @@ function CartScreen() {
             <table className="min-w-full ">
               <thead className="border-b">
                 <tr>
-                  <th className="p-5 text-left">Item</th>
-                  <th className="p-5 text-right">Quantity</th>
-                  <th className="p-5 text-right">Price</th>
-                  <th className="p-5">Action</th>
+                  <th className="p-5 text-left">商品名稱</th>
+                  <th className="p-5 text-left">內容加註</th>
+                  <th className="p-5 text-right">數量</th>
+                  <th className="p-5 text-right">單價</th>
+                  <th className="p-5">動作</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,10 +74,20 @@ function CartScreen() {
                       </Link>
                     </td>
                     <td className="p-5 text-right">
+                    <input
+                      type="text"
+                      value={item.remark}
+                      onBlur={(e) =>
+                        updateCartHandler(item, item.quantity, e.target.value)
+                      }
+                      placeholder="Enter something..."
+                    />
+                    </td>
+                    <td className="p-5 text-right">
                       <select
                         value={item.quantity}
                         onChange={(e) =>
-                          updateCartHandler(item, e.target.value)
+                          updateCartHandler(item, e.target.value, item.remark)
                         }
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
@@ -96,7 +112,7 @@ function CartScreen() {
             <ul>
               <li>
                 <div className="pb-3 text-xl">
-                  Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
+                  小計 ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : $
                   {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
                 </div>
               </li>
@@ -105,7 +121,7 @@ function CartScreen() {
                   onClick={() => router.push('login?redirect=/shipping')}
                   className="primary-button w-full"
                 >
-                  Check Out
+                  下一步
                 </button>
               </li>
             </ul>
