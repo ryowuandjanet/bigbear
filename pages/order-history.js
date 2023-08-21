@@ -37,9 +37,9 @@ function OrderHistoryScreen() {
   }, []);
   return (
     <Layout title="Order History">
-      <h1 className="mb-4 text-xl">Order History</h1>
+      <h1 className="mb-4 text-xl">訂單記錄</h1>
       {loading ? (
-        <div>Loading...</div>
+        <div>載入中...</div>
       ) : error ? (
         <div className="alert-error">{error}</div>
       ) : (
@@ -47,9 +47,9 @@ function OrderHistoryScreen() {
           <table className="min-w-full">
             <thead className="border-b">
               <tr>
-                <th className="px-5 text-left">ID</th>
-                <th className="p-5 text-left">DATE</th>
-                <th className="p-5 text-left">TOTAL</th>
+                <th className="px-5 text-left">編號</th>
+                <th className="p-5 text-left">日期</th>
+                <th className="p-5 text-left">總數</th>
                 <th className="p-5 text-left">PAID</th>
                 <th className="p-5 text-left">DELIVERED</th>
                 <th className="p-5 text-left">ACTION</th>

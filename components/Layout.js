@@ -38,7 +38,7 @@ export default function Layout({ title, children }) {
   return (
     <>
       <Head>
-        <title>{title ? title + ' - Amazona' : 'Amazona'}</title>
+        <title>{title ? title + ' - 大熊廣告印刷設計' : '大熊廣告印刷設計'}</title>
         <meta name="description" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -49,7 +49,7 @@ export default function Layout({ title, children }) {
         <header>
           <nav className="flex h-12 items-center px-4 justify-between shadow-md">
             <Link href="/" className="text-lg font-bold">
-              amazona
+              大熊廣告印刷設計
             </Link>
             <form
               onSubmit={submitHandler}
@@ -59,7 +59,7 @@ export default function Layout({ title, children }) {
                 onChange={(e) => setQuery(e.target.value)}
                 type="text"
                 className="rounded-tr-none rounded-br-none p-1 text-sm   focus:ring-0"
-                placeholder="Search products"
+                placeholder="商品搜尋"
               />
               <button
                 className="rounded rounded-tl-none rounded-bl-none bg-amber-300 p-1 text-sm dark:text-black"
@@ -71,7 +71,7 @@ export default function Layout({ title, children }) {
             </form>
             <div className="flex items-center z-10">
               <Link href="/cart" className="p-2">
-                Cart
+                購物車
                 {cartItemsCount > 0 && (
                   <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
                     {cartItemsCount}
@@ -89,7 +89,7 @@ export default function Layout({ title, children }) {
                   <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
                     <Menu.Item>
                       <DropdownLink className="dropdown-link" href="/profile">
-                        Profile
+                        個人資料
                       </DropdownLink>
                     </Menu.Item>
                     <Menu.Item>
@@ -97,7 +97,7 @@ export default function Layout({ title, children }) {
                         className="dropdown-link"
                         href="/order-history"
                       >
-                        Order History
+                        訂單記錄
                       </DropdownLink>
                     </Menu.Item>
                     {session.user.isAdmin && (
@@ -106,7 +106,7 @@ export default function Layout({ title, children }) {
                           className="dropdown-link"
                           href="/admin/dashboard"
                         >
-                          Admin Dashboard
+                          管理者介面
                         </DropdownLink>
                       </Menu.Item>
                     )}
@@ -116,14 +116,14 @@ export default function Layout({ title, children }) {
                         href="#"
                         onClick={logoutClickHandler}
                       >
-                        Logout
+                        登出
                       </a>
                     </Menu.Item>
                   </Menu.Items>
                 </Menu>
               ) : (
                 <Link href="/login" className="p-2">
-                  Login
+                  登錄
                 </Link>
               )}
             </div>
@@ -131,7 +131,7 @@ export default function Layout({ title, children }) {
         </header>
         <main className="container m-auto mt-4 px-4">{children}</main>
         <footer className="flex h-10 justify-center items-center shadow-inner">
-          <p>Copyright © 2022 Amazona</p>
+          <p>版權 © 2023 大熊廣告印刷設計</p>
         </footer>
       </div>
     </>

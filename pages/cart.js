@@ -80,7 +80,7 @@ function CartScreen() {
                       onBlur={(e) =>
                         updateCartHandler(item, item.quantity, e.target.value)
                       }
-                      placeholder="Enter something..."
+                      placeholder="輸入廣告內容..."
                     />
                     </td>
                     <td className="p-5 text-right">
@@ -121,7 +121,7 @@ function CartScreen() {
                   onClick={() => router.push('login?redirect=/shipping')}
                   className="primary-button w-full"
                 >
-                  下一步
+                  查看
                 </button>
               </li>
             </ul>

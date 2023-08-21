@@ -51,7 +51,7 @@ export default function PaymentScreen() {
               id={payment}
               type="radio"
               checked={index === 2}
-              disabled={true} // Disable all options
+              disabled={index < 2} 
             />
 
             <label className="p-2" htmlFor={payment}>
