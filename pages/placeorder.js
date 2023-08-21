@@ -65,34 +65,34 @@ export default function PlaceOrderScreen() {
   return (
     <Layout title="Place Order">
       <CheckoutWizard activeStep={3} />
-      <h1 className="mb-4 text-xl">Place Order</h1>
+      <h1 className="mb-4 text-xl">訂單確認</h1>
       {cartItems.length === 0 ? (
         <div>
-          Cart is empty. <Link href="/">Go shopping</Link>
+          購物車是空的. <Link href="/">買選購</Link>
         </div>
       ) : (
         <div className="grid md:grid-cols-4 md:gap-5">
           <div className="overflow-x-auto md:col-span-3">
             <div className="card  p-5">
-              <h2 className="mb-2 text-lg">Shipping Address</h2>
+              <h2 className="mb-2 text-lg">收件地址</h2>
               <div>
-                {shippingAddress.fullName}, {shippingAddress.address},{' '}
-                {shippingAddress.city}, {shippingAddress.postalCode},{' '}
-                {shippingAddress.country}
+                {shippingAddress.company}, {shippingAddress.address},{' '}
+                {shippingAddress.orderName}, {shippingAddress.phone},{' '}
+                {shippingAddress.taxIDNumber}
               </div>
               <div>
-                <Link href="/shipping">Edit</Link>
+                <Link href="/shipping">編輯</Link>
               </div>
             </div>
-            <div className="card  p-5">
+            {/* <div className="card  p-5">
               <h2 className="mb-2 text-lg">Payment Method</h2>
               <div>{paymentMethod}</div>
               <div>
                 <Link href="/payment">Edit</Link>
               </div>
-            </div>
+            </div> */}
             <div className="card overflow-x-auto p-5">
-              <h2 className="mb-2 text-lg">Order Items</h2>
+              <h2 className="mb-2 text-lg">訂單項目</h2>
               <table className="min-w-full">
                 <thead className="border-b">
                   <tr>
@@ -128,42 +128,42 @@ export default function PlaceOrderScreen() {
                         ${item.quantity * item.price}
                       </td>
                       <td className="p-5 text-right">
-                        ${item.remark}
+                        {item.remark}
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
               <div>
-                <Link href="/cart">Edit</Link>
+                <Link href="/cart">編輯</Link>
               </div>
             </div>
           </div>
           <div>
             <div className="card  p-5">
-              <h2 className="mb-2 text-lg">Order Summary</h2>
+              <h2 className="mb-2 text-lg">訂單摘要</h2>
               <ul>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Items</div>
+                    <div>項目</div>
                     <div>${itemsPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Tax</div>
+                    <div>含稅</div>
                     <div>${taxPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Shipping</div>
+                    <div>運費</div>
                     <div>${shippingPrice}</div>
                   </div>
                 </li>
                 <li>
                   <div className="mb-2 flex justify-between">
-                    <div>Total</div>
+                    <div>總計</div>
                     <div>${totalPrice}</div>
                   </div>
                 </li>
@@ -173,7 +173,7 @@ export default function PlaceOrderScreen() {
                     onClick={placeOrderHandler}
                     className="primary-button w-full"
                   >
-                    {loading ? 'Loading...' : 'Place Order'}
+                    {loading ? '載入中...' : '下一步'}
                   </button>
                 </li>
               </ul>

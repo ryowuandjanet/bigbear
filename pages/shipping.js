@@ -20,28 +20,28 @@ export default function ShippingScreen() {
   const router = useRouter();
 
   useEffect(() => {
-    setValue('fullName', shippingAddress.fullName);
+    setValue('fullName', shippingAddress.company);
     setValue('address', shippingAddress.address);
-    setValue('city', shippingAddress.city);
-    setValue('postalCode', shippingAddress.postalCode);
-    setValue('country', shippingAddress.country);
+    setValue('city', shippingAddress.orderName);
+    setValue('postalCode', shippingAddress.phone);
+    setValue('country', shippingAddress.taxIDNumber);
   }, [setValue, shippingAddress]);
 
-  const submitHandler = ({ fullName, address, city, postalCode, country }) => {
+  const submitHandler = ({ company, address, orderName, phone, taxIDNumber }) => {
     dispatch({
       type: 'SAVE_SHIPPING_ADDRESS',
-      payload: { fullName, address, city, postalCode, country },
+      payload: { company, address, orderName, phone, taxIDNumber },
     });
     Cookies.set(
       'cart',
       JSON.stringify({
         ...cart,
         shippingAddress: {
-          fullName,
-          address,
-          city,
-          postalCode,
-          country,
+          company, 
+          address, 
+          orderName, 
+          phone, 
+          taxIDNumber,
         },
       })
     );
@@ -56,29 +56,29 @@ export default function ShippingScreen() {
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <h1 className="mb-4 text-xl">Shipping Address</h1>
+        <h1 className="mb-4 text-xl">訂購資訊</h1>
         <div className="mb-4">
-          <label htmlFor="fullName">Full Name</label>
+          <label htmlFor="company">公司行號</label>
           <input
             className="w-full"
-            id="fullName"
+            id="company"
             autoFocus
-            {...register('fullName', {
-              required: 'Please enter full name',
+            {...register('company', {
+              required: '請輸入公司行號',
             })}
           />
-          {errors.fullName && (
-            <div className="text-red-500">{errors.fullName.message}</div>
+          {errors.company && (
+            <div className="text-red-500">{errors.company.message}</div>
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">送達地址</label>
           <input
             className="w-full"
             id="address"
             {...register('address', {
-              required: 'Please enter address',
-              minLength: { value: 3, message: 'Address is more than 2 chars' },
+              required: '請輸入送達地址',
+              minLength: { value: 3, message: '地址最少要兩個字元' },
             })}
           />
           {errors.address && (
@@ -86,46 +86,46 @@ export default function ShippingScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="city">City</label>
+          <label htmlFor="orderName">訂購人</label>
           <input
             className="w-full"
-            id="city"
-            {...register('city', {
-              required: 'Please enter city',
+            id="orderName"
+            {...register('orderName', {
+              required: '請輸入訂購人姓名',
             })}
           />
-          {errors.city && (
-            <div className="text-red-500 ">{errors.city.message}</div>
+          {errors.orderName && (
+            <div className="text-red-500 ">{errors.orderName.message}</div>
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="postalCode">Postal Code</label>
+          <label htmlFor="phone">聯絡電話</label>
           <input
             className="w-full"
-            id="postalCode"
-            {...register('postalCode', {
-              required: 'Please enter postal code',
+            id="phone"
+            {...register('phone', {
+              required: '請輸入聯絡電話',
             })}
           />
-          {errors.postalCode && (
-            <div className="text-red-500 ">{errors.postalCode.message}</div>
+          {errors.phone && (
+            <div className="text-red-500 ">{errors.phone.message}</div>
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="country">Country</label>
+          <label htmlFor="taxIDNumber">統一編號</label>
           <input
             className="w-full"
-            id="country"
-            {...register('country', {
-              required: 'Please enter country',
+            id="taxIDNumber"
+            {...register('taxIDNumber', {
+              required: '請輸入統一編號',
             })}
           />
-          {errors.country && (
-            <div className="text-red-500 ">{errors.country.message}</div>
+          {errors.taxIDNumber && (
+            <div className="text-red-500 ">{errors.taxIDNumber.message}</div>
           )}
         </div>
         <div className="mb-4 flex justify-between">
-          <button className="primary-button">Next</button>
+          <button className="primary-button">下一步</button>
         </div>
       </form>
     </Layout>
