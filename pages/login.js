@@ -44,9 +44,9 @@ export default function LoginScreen() {
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <h1 className="mb-4 text-xl">Login</h1>
+        <h1 className="mb-4 text-xl">登錄</h1>
         <div className="mb-4">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">信箱</label>
           <input
             type="email"
             {...register('email', {
@@ -65,7 +65,7 @@ export default function LoginScreen() {
           )}
         </div>
         <div className="mb-4">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">密碼</label>
           <input
             type="password"
             {...register('password', {
@@ -81,11 +81,11 @@ export default function LoginScreen() {
           )}
         </div>
         <div className="mb-4 ">
-          <button className="primary-button">Login</button>
+          <button className="primary-button">登錄</button>
         </div>
         <div className="mb-4 ">
-          Don&apos;t have an account? &nbsp;
-          <Link href={`/register?redirect=${redirect || '/'}`}>Register</Link>
+          沒有帳號嗎? &nbsp;
+          <Link href={`/register?redirect=${redirect || '/'}`}>註冊</Link>
         </div>
       </form>
     </Layout>

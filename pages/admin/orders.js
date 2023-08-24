@@ -42,19 +42,19 @@ export default function AdminOrderScreen() {
       <div className="grid md:grid-cols-4 md:gap-5">
         <div>
           <ul>
-            <li>
-              <Link href="/admin/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link href="/admin/orders" className="font-bold">
-                Orders
+          <li>
+              <Link href="/admin/dashboard">
+                管控面板 
               </Link>
             </li>
             <li>
-              <Link href="/admin/products">Products</Link>
+              <Link href="/admin/orders" className="font-bold">訂單內容</Link>
             </li>
             <li>
-              <Link href="/admin/users">Users</Link>
+              <Link href="/admin/products">產品明細</Link>
+            </li>
+            <li>
+              <Link href="/admin/users">使用者資料</Link>
             </li>
           </ul>
         </div>
@@ -71,12 +71,11 @@ export default function AdminOrderScreen() {
                 <thead className="border-b">
                   <tr>
                     <th className="px-5 text-left">ID</th>
-                    <th className="p-5 text-left">USER</th>
-                    <th className="p-5 text-left">DATE</th>
-                    <th className="p-5 text-left">TOTAL</th>
-                    <th className="p-5 text-left">PAID</th>
-                    <th className="p-5 text-left">DELIVERED</th>
-                    <th className="p-5 text-left">ACTION</th>
+                    <th className="p-5 text-left">訂購者</th>
+                    <th className="p-5 text-left">訂購日期</th>
+                    <th className="p-5 text-left">消費金額</th>
+                    <th className="p-5 text-left">支付方式</th>
+                    <th className="p-5 text-left">動作</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -93,16 +92,11 @@ export default function AdminOrderScreen() {
                       <td className="p-5">
                         {order.isPaid
                           ? `${order.paidAt.substring(0, 10)}`
-                          : 'not paid'}
-                      </td>
-                      <td className="p-5">
-                        {order.isDelivered
-                          ? `${order.deliveredAt.substring(0, 10)}`
-                          : 'not delivered'}
+                          : '隻方交易'}
                       </td>
                       <td className="p-5">
                         <Link href={`/order/${order._id}`} passHref>
-                          Details
+                          明細
                         </Link>
                       </td>
                     </tr>

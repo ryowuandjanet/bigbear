@@ -72,27 +72,27 @@ function AdminUsersScreen() {
       <div className="grid md:grid-cols-4 md:gap-5">
         <div>
           <ul>
-            <li>
-              <Link href="/admin/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link href="/admin/orders">Orders</Link>
-            </li>
-            <li>
-              <Link href="/admin/products">Products</Link>
-            </li>
-            <li>
-              <Link href="/admin/users" className="font-bold">
-                Users
+          <li>
+              <Link href="/admin/dashboard">
+                管控面板 
               </Link>
+            </li>
+            <li>
+              <Link href="/admin/orders">訂單內容</Link>
+            </li>
+            <li>
+              <Link href="/admin/products">產品明細</Link>
+            </li>
+            <li>
+              <Link href="/admin/users" className="font-bold">使用者資料</Link>
             </li>
           </ul>
         </div>
         <div className="overflow-x-auto md:col-span-3">
-          <h1 className="mb-4 text-xl">Users</h1>
-          {loadingDelete && <div>Deleting...</div>}
+          <h1 className="mb-4 text-xl">使用者資料</h1>
+          {loadingDelete && <div>刪除中...</div>}
           {loading ? (
-            <div>Loading...</div>
+            <div>載入中...</div>
           ) : error ? (
             <div className="alert-error">{error}</div>
           ) : (
@@ -101,10 +101,10 @@ function AdminUsersScreen() {
                 <thead className="border-b">
                   <tr>
                     <th className="px-5 text-left">ID</th>
-                    <th className="p-5 text-left">NAME</th>
-                    <th className="p-5 text-left">EMAIL</th>
-                    <th className="p-5 text-left">ADMIN</th>
-                    <th className="p-5 text-left">ACTIONS</th>
+                    <th className="p-5 text-left">用戶名</th>
+                    <th className="p-5 text-left">電子郵件</th>
+                    <th className="p-5 text-left">管理權限</th>
+                    <th className="p-5 text-left">動作</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -113,7 +113,7 @@ function AdminUsersScreen() {
                       <td className=" p-5 ">{user._id.substring(20, 24)}</td>
                       <td className=" p-5 ">{user.name}</td>
                       <td className=" p-5 ">{user.email}</td>
-                      <td className=" p-5 ">{user.isAdmin ? 'YES' : 'NO'}</td>
+                      <td className=" p-5 ">{user.isAdmin ? '管理者' : '一般使用者'}</td>
                       <td className=" p-5 ">
                         <Link
                           href={`/admin/user/${user._id}`}
@@ -121,7 +121,7 @@ function AdminUsersScreen() {
                           type="button"
                           className="default-button"
                         >
-                          Edit
+                          編輯
                         </Link>
                         &nbsp;
                         <button
@@ -129,7 +129,7 @@ function AdminUsersScreen() {
                           className="default-button"
                           onClick={() => deleteHandler(user._id)}
                         >
-                          Delete
+                          刪除
                         </button>
                       </td>
                     </tr>

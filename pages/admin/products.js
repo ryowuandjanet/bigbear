@@ -79,7 +79,7 @@ export default function AdminProdcutsScreen() {
   }, [successDelete]);
 
   const deleteHandler = async (productId) => {
-    if (!window.confirm('Are you sure?')) {
+    if (!window.confirm('你確定嗎?')) {
       return;
     }
     try {
@@ -97,36 +97,36 @@ export default function AdminProdcutsScreen() {
       <div className="grid md:grid-cols-4 md:gap-5">
         <div>
           <ul>
-            <li>
-              <Link href="/admin/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link href="/admin/orders">Orders</Link>
-            </li>
-            <li>
-              <Link href="/admin/products" className="font-bold">
-                Products
+          <li>
+              <Link href="/admin/dashboard">
+                管控面板 
               </Link>
             </li>
             <li>
-              <Link href="/admin/users">Users</Link>
+              <Link href="/admin/orders">訂單內容</Link>
+            </li>
+            <li>
+              <Link href="/admin/products" className="font-bold">產品明細</Link>
+            </li>
+            <li>
+              <Link href="/admin/users">使用者資料</Link>
             </li>
           </ul>
         </div>
         <div className="overflow-x-auto md:col-span-3">
           <div className="flex justify-between">
-            <h1 className="mb-4 text-xl">Products</h1>
+            <h1 className="mb-4 text-xl">商品</h1>
             {loadingDelete && <div>Deleting item...</div>}
             <button
               disabled={loadingCreate}
               onClick={createHandler}
               className="primary-button"
             >
-              {loadingCreate ? 'Loading' : 'Create'}
+              {loadingCreate ? '載入中' : '建立'}
             </button>
           </div>
           {loading ? (
-            <div>Loading...</div>
+            <div>載入中...</div>
           ) : error ? (
             <div className="alert-error">{error}</div>
           ) : (
@@ -135,12 +135,11 @@ export default function AdminProdcutsScreen() {
                 <thead className="border-b">
                   <tr>
                     <th className="px-5 text-left">ID</th>
-                    <th className="p-5 text-left">NAME</th>
-                    <th className="p-5 text-left">PRICE</th>
-                    <th className="p-5 text-left">CATEGORY</th>
-                    <th className="p-5 text-left">COUNT</th>
-                    <th className="p-5 text-left">RATING</th>
-                    <th className="p-5 text-left">ACTIONS</th>
+                    <th className="p-5 text-left">商品名稱</th>
+                    <th className="p-5 text-left">價格</th>
+                    <th className="p-5 text-left">分類目錄</th>
+                    <th className="p-5 text-left">庫存數</th>
+                    <th className="p-5 text-left">動作</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -151,14 +150,13 @@ export default function AdminProdcutsScreen() {
                       <td className=" p-5 ">${product.price}</td>
                       <td className=" p-5 ">{product.category}</td>
                       <td className=" p-5 ">{product.countInStock}</td>
-                      <td className=" p-5 ">{product.rating}</td>
                       <td className=" p-5 ">
                         <Link
                           href={`/admin/product/${product._id}`}
                           type="button"
                           className="default-button"
                         >
-                          Edit
+                          編輯
                         </Link>
                         &nbsp;
                         <button
@@ -166,7 +164,7 @@ export default function AdminProdcutsScreen() {
                           className="default-button"
                           type="button"
                         >
-                          Delete
+                          刪除
                         </button>
                       </td>
                     </tr>

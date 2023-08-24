@@ -43,6 +43,7 @@ function reducer(state, action) {
       state;
   }
 }
+
 function OrderScreen() {
   const { data: session } = useSession();
   // order/:id
@@ -168,6 +169,10 @@ function OrderScreen() {
     }
   }
 
+  function goToHomepage() {
+    window.location.href = '/'; // Replace '/' with the actual URL of your homepage
+  }
+
   return (
     <Layout title={`Order ${orderId}`}>
       <h1 className="mb-4 text-xl">{`訂單編號 ${orderId}`}</h1>
@@ -265,12 +270,21 @@ function OrderScreen() {
                     <div>${totalPrice}</div>
                   </div>
                 </li>
+                <li>
+                <button 
+                  type="button" 
+                  onClick={goToHomepage}
+                  class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
+                  返回首頁
+                </button>
+                </li>
+                
                 {!isPaid && (
                   <li>
                     {isPending ? (
                       <div>載入中...</div>
                     ) : (
-                      <div className="w-full">
+                      <div className="w-full hidden">
                         <PayPalButtons
                           createOrder={createOrder}
                           onApprove={onApprove}

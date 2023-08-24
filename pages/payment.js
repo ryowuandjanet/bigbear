@@ -50,8 +50,9 @@ export default function PaymentScreen() {
               className="p-2 outline-none focus:ring-0"
               id={payment}
               type="radio"
-              checked={index === 2}
               disabled={index < 2} 
+              checked={selectedPaymentMethod === payment}
+              onChange={() => setSelectedPaymentMethod(payment)}
             />
 
             <label className="p-2" htmlFor={payment}>

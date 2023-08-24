@@ -49,10 +49,9 @@ function OrderHistoryScreen() {
               <tr>
                 <th className="px-5 text-left">編號</th>
                 <th className="p-5 text-left">日期</th>
-                <th className="p-5 text-left">總數</th>
-                <th className="p-5 text-left">PAID</th>
-                <th className="p-5 text-left">DELIVERED</th>
-                <th className="p-5 text-left">ACTION</th>
+                <th className="p-5 text-left">金額</th>
+                <th className="p-5 text-left">支付方式</th>
+                <th className="p-5 text-left">動作</th>
               </tr>
             </thead>
             <tbody>
@@ -64,12 +63,7 @@ function OrderHistoryScreen() {
                   <td className=" p-5 ">
                     {order.isPaid
                       ? `${order.paidAt.substring(0, 10)}`
-                      : 'not paid'}
-                  </td>
-                  <td className=" p-5 ">
-                    {order.isDelivered
-                      ? `${order.deliveredAt.substring(0, 10)}`
-                      : 'not delivered'}
+                      : '雙方交易'}
                   </td>
                   <td className=" p-5 ">
                     <Link href={`/order/${order._id}`} passHref>

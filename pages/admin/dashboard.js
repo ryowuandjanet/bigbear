@@ -83,24 +83,24 @@ function AdminDashboardScreen() {
           <ul>
             <li>
               <Link href="/admin/dashboard" className="font-bold">
-                Dashboard
+                管控面板 
               </Link>
             </li>
             <li>
-              <Link href="/admin/orders">Orders</Link>
+              <Link href="/admin/orders">訂單內容</Link>
             </li>
             <li>
-              <Link href="/admin/products">Products</Link>
+              <Link href="/admin/products">產品明細</Link>
             </li>
             <li>
-              <Link href="/admin/users">Users</Link>
+              <Link href="/admin/users">使用者資料</Link>
             </li>
           </ul>
         </div>
         <div className="md:col-span-3">
-          <h1 className="mb-4 text-xl">Admin Dashboard</h1>
+          <h1 className="mb-4 text-xl">管理者管控面板</h1>
           {loading ? (
-            <div>Loading...</div>
+            <div>載入中...</div>
           ) : error ? (
             <div className="alert-error">{error}</div>
           ) : (
@@ -108,23 +108,23 @@ function AdminDashboardScreen() {
               <div className="grid grid-cols-1 md:grid-cols-4">
                 <div className="card m-5 p-5">
                   <p className="text-3xl">${summary.ordersPrice} </p>
-                  <p>Sales</p>
-                  <Link href="/admin/orders">View sales</Link>
+                  <p>銷售金額</p>
+                  <Link href="/admin/orders">檢視銷售明細</Link>
                 </div>
                 <div className="card m-5 p-5">
                   <p className="text-3xl">{summary.ordersCount} </p>
-                  <p>Orders</p>
-                  <Link href="/admin/orders">View orders</Link>
+                  <p>訂單</p>
+                  <Link href="/admin/orders">檢視訂單明細</Link>
                 </div>
                 <div className="card m-5 p-5">
                   <p className="text-3xl">{summary.productsCount} </p>
-                  <p>Products</p>
-                  <Link href="/admin/products">View products</Link>
+                  <p>商品</p>
+                  <Link href="/admin/products">檢視商品明細</Link>
                 </div>
                 <div className="card m-5 p-5">
                   <p className="text-3xl">{summary.usersCount} </p>
-                  <p>Users</p>
-                  <Link href="/admin/users">View users</Link>
+                  <p>使用者</p>
+                  <Link href="/admin/users">檢視使用者明細</Link>
                 </div>
               </div>
               <h2 className="text-xl">Sales Report</h2>
