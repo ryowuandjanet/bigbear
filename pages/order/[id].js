@@ -108,14 +108,12 @@ function OrderScreen() {
   }, [order, orderId, paypalDispatch, successDeliver, successPay]);
   const {
     shippingAddress,
-    paymentMethod,
     orderItems,
     itemsPrice,
     taxPrice,
     shippingPrice,
     totalPrice,
     isPaid,
-    paidAt,
     isDelivered,
     deliveredAt,
   } = order;
