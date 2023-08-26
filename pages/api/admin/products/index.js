@@ -5,14 +5,14 @@ import db from '../../../../utils/db';
 const handler = async (req, res) => {
   const user = await getToken({ req });
   if (!user || !user.isAdmin) {
-    return res.status(401).send('admin signin required');
+    return res.status(401).send('需要管理員登錄');
   }
   if (req.method === 'GET') {
     return getHandler(req, res);
   } else if (req.method === 'POST') {
     return postHandler(req, res);
   } else {
-    return res.status(400).send({ message: 'Method not allowed' });
+    return res.status(400).send({ message: '方法不允許' });
   }
 };
 const postHandler = async (req, res) => {
@@ -32,7 +32,7 @@ const postHandler = async (req, res) => {
 
   const product = await newProduct.save();
   await db.disconnect();
-  res.send({ message: 'Product created successfully', product });
+  res.send({ message: '產品建立成功', product });
 };
 const getHandler = async (req, res) => {
   await db.connect();

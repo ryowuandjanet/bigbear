@@ -5,6 +5,10 @@ import Image from 'next/image';
 
 export default function ProductItem({ product, addToCartHandler }) {
   return (
+    <>
+    
+    
+
     <div className="card">
       <Link href={'/about'}>test</Link>
       <Link href={`/product/${product.slug}`}>
@@ -33,5 +37,6 @@ export default function ProductItem({ product, addToCartHandler }) {
         </button>
       </div>
     </div>
+    </>
   );
 }

@@ -73,7 +73,7 @@ function CartScreen() {
                         {item.name}
                       </Link>
                     </td>
-                    <td className="p-5 text-right">
+                    <td className="text-right">
                     <input
                       type="text"
                       value={item.remark}
@@ -81,6 +81,7 @@ function CartScreen() {
                         updateCartHandler(item, item.quantity, e.target.value)
                       }
                       placeholder="輸入廣告內容..."
+                      className='w-full'
                     />
                     </td>
                     <td className="p-5 text-right">

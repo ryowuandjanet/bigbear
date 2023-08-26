@@ -5,7 +5,7 @@ import db from '../../../../../utils/db';
 const handler = async (req, res) => {
   const user = await getToken({ req });
   if (!user || (user && !user.isAdmin)) {
-    return res.status(401).send('signin required');
+    return res.status(401).send('需要登錄');
   }
 
   if (req.method === 'GET') {
@@ -15,7 +15,7 @@ const handler = async (req, res) => {
   } else if (req.method === 'DELETE') {
     return deleteHandler(req, res, user);
   } else {
-    return res.status(400).send({ message: 'Method not allowed' });
+    return res.status(400).send({ message: '方法不允許' });
   }
 };
 const getHandler = async (req, res) => {
@@ -38,10 +38,10 @@ const putHandler = async (req, res) => {
     product.description = req.body.description;
     await product.save();
     await db.disconnect();
-    res.send({ message: 'Product updated successfully' });
+    res.send({ message: '產品更新成功' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product not found' });
+    res.status(404).send({ message: '未找到產品' });
   }
 };
 const deleteHandler = async (req, res) => {
@@ -50,10 +50,10 @@ const deleteHandler = async (req, res) => {
   if (product) {
     await product.remove();
     await db.disconnect();
-    res.send({ message: 'Product deleted successfully' });
+    res.send({ message: '產品刪除成功' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product not found' });
+    res.status(404).send({ message: '未找到產品' });
   }
 };
 export default handler;

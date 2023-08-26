@@ -134,29 +134,29 @@ export default function AdminProductEditScreen() {
   };
 
   return (
-    <Layout title={`Edit Product ${productId}`}>
+    <Layout title={`編輯產品 ${productId}`}>
       <div className="grid md:grid-cols-4 md:gap-5">
         <div>
           <ul>
-            <li>
-              <Link href="/admin/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link href="/admin/orders">Orders</Link>
-            </li>
-            <li>
-              <Link href="/admin/products" className="font-bold">
-                Products
+          <li>
+            <Link href="/admin/dashboard">
+                管控面板 
               </Link>
             </li>
             <li>
-              <Link href="/admin/users">Users</Link>
+              <Link href="/admin/orders">訂單內容</Link>
+            </li>
+            <li>
+              <Link href="/admin/products" className="font-bold">產品明細</Link>
+            </li>
+            <li>
+              <Link href="/admin/users">使用者資料</Link>
             </li>
           </ul>
         </div>
         <div className="md:col-span-3">
           {loading ? (
-            <div>Loading...</div>
+            <div>載入中...</div>
           ) : error ? (
             <div className="alert-error">{error}</div>
           ) : (
@@ -164,16 +164,16 @@ export default function AdminProductEditScreen() {
               className="mx-auto max-w-screen-md"
               onSubmit={handleSubmit(submitHandler)}
             >
-              <h1 className="mb-4 text-xl">{`Edit Product ${productId}`}</h1>
+              <h1 className="mb-4 text-xl">{`商品編輯 ${productId}`}</h1>
               <div className="mb-4">
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">商品名稱</label>
                 <input
                   type="text"
                   className="w-full"
                   id="name"
                   autoFocus
                   {...register('name', {
-                    required: 'Please enter name',
+                    required: '請輸入商品名稱',
                   })}
                 />
                 {errors.name && (
@@ -195,13 +195,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="price">Price</label>
+                <label htmlFor="price">單價</label>
                 <input
                   type="text"
                   className="w-full"
                   id="price"
                   {...register('price', {
-                    required: 'Please enter price',
+                    required: '請輸入單價',
                   })}
                 />
                 {errors.price && (
@@ -209,13 +209,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="image">image</label>
+                <label htmlFor="image">商品圖片</label>
                 <input
                   type="text"
                   className="w-full"
                   id="image"
                   {...register('image', {
-                    required: 'Please enter image',
+                    required: '請輸入商品圖片',
                   })}
                 />
                 {errors.image && (
@@ -223,7 +223,7 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="imageFile">Upload image</label>
+                <label htmlFor="imageFile">上傳圖片</label>
                 <input
                   type="file"
                   className="w-full"
@@ -231,16 +231,16 @@ export default function AdminProductEditScreen() {
                   onChange={uploadHandler}
                 />
 
-                {loadingUpload && <div>Uploading....</div>}
+                {loadingUpload && <div>上傳中....</div>}
               </div>
               <div className="mb-4">
-                <label htmlFor="category">category</label>
+                <label htmlFor="category">目錄(分類)</label>
                 <input
                   type="text"
                   className="w-full"
                   id="category"
                   {...register('category', {
-                    required: 'Please enter category',
+                    required: '請輸入目錄(分類)',
                   })}
                 />
                 {errors.category && (
@@ -248,13 +248,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="brand">brand</label>
+                <label htmlFor="brand">品牌</label>
                 <input
                   type="text"
                   className="w-full"
                   id="brand"
                   {...register('brand', {
-                    required: 'Please enter brand',
+                    required: '請輸入品牌',
                   })}
                 />
                 {errors.brand && (
@@ -262,13 +262,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="countInStock">countInStock</label>
+                <label htmlFor="countInStock">庫存數</label>
                 <input
                   type="text"
                   className="w-full"
                   id="countInStock"
                   {...register('countInStock', {
-                    required: 'Please enter countInStock',
+                    required: '請輸入庫存數',
                   })}
                 />
                 {errors.countInStock && (
@@ -278,13 +278,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="countInStock">description</label>
+                <label htmlFor="countInStock">商品描述</label>
                 <input
                   type="text"
                   className="w-full"
                   id="description"
                   {...register('description', {
-                    required: 'Please enter description',
+                    required: '請輸入商品描述',
                   })}
                 />
                 {errors.description && (
@@ -295,11 +295,11 @@ export default function AdminProductEditScreen() {
               </div>
               <div className="mb-4">
                 <button disabled={loadingUpdate} className="primary-button">
-                  {loadingUpdate ? 'Loading' : 'Update'}
+                  {loadingUpdate ? '載入中' : '更新'}
                 </button>
               </div>
               <div className="mb-4">
-                <Link href={`/admin/products`}>Back</Link>
+                <Link href={`/admin/products`}>返回</Link>
               </div>
             </form>
           )}

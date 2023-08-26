@@ -1,5 +1,6 @@
 import db from '../utils/db';
 import Layout from '../components/Layout';
+import Link from 'next/link';
 import Product from '../models/Product';
 import { useContext } from 'react';
 import { Store } from '../utils/Store';
@@ -29,25 +30,55 @@ export default function Home({ topRatedProducts }) {
     <Layout title="Amazona">
       <Carousel showThumbs={false} autoPlay>
         <div>
-          <img src="/images/banner1.jpg" />
+          <img src="https://res.cloudinary.com/dp53ha8ie/image/upload/v1693064511/bigbear/%E6%A9%AB%E5%B9%85/slider_figj9t.png" />
         </div>
         <div>
           <img src="/images/banner2.jpg" />
         </div>
       </Carousel>
+
       
+      <div className="grid gap-4">
+        <div>
+          <Link href='/class/triangular_desk_calendar_area'>
+              <img className="h-auto max-w-full rounded-lg" src="https://2626731.weebly.com/uploads/1/0/9/3/109388399/1644706616_orig.jpg" alt="" />
+          </Link>
+        </div>
+      </div>
 
+      <h2 className="my-3 text-2xl">產品分類</h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div>
+          <Link href='/class/triangular_desk_calendar_area'>
+            <img className="h-auto max-w-full rounded-lg" src="https://2626731.weebly.com/uploads/1/0/9/3/109388399/942654648_orig.jpg" alt="" />
+          </Link>
+        </div>
+        <div>
+          <Link href='/class/calendar_area'>
+            <img className="h-auto max-w-full rounded-lg" src="https://2626731.weebly.com/uploads/1/0/9/3/109388399/484110301_orig.jpg" alt="" />
+          </Link>
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="https://2626731.weebly.com/uploads/1/0/9/3/109388399/1479900923_orig.jpg" alt="" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="https://2626731.weebly.com/uploads/1/0/9/3/109388399/175403403_orig.jpg" alt="" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="https://2626731.weebly.com/uploads/1/0/9/3/109388399/2128708269_orig.jpg" alt="" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="https://2626731.weebly.com/uploads/1/0/9/3/109388399/405824704_orig.jpg" alt="" />
+        </div>
+      </div>
 
-      <h2 className="my-3 text-2xl">Featured Products</h2>
-      {topRatedProducts.length === 0 && <div>No Product Found</div>}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {topRatedProducts.map((product) => (
-          <ProductItem
-            key={product._id}
-            product={product}
-            addToCartHandler={addToCartHandler}
-          />
-        ))}
+      <div className="grid gap-4">
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="https://2626731.weebly.com/uploads/1/0/9/3/109388399/1178546123_orig.jpg" alt="" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="https://2626731.weebly.com/uploads/1/0/9/3/109388399/573798035_orig.jpg" alt="" />
+        </div>
       </div>
     </Layout>
   );
