@@ -1,27 +1,24 @@
-import axios from 'axios';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useContext } from 'react';
-import { toast } from 'react-toastify';
-import Layout from '../components/Layout';
-import ProductItem from '../components/ProductItem';
-import Product from '../models/Product';
 import db from '../utils/db';
+import Layout from '../components/Layout';
+import Product from '../models/Product';
+import { useContext } from 'react';
 import { Store } from '../utils/Store';
+import axios from 'axios';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { toast } from 'react-toastify';
+import ProductItem from '../components/ProductItem';
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-export default function Home({ products, featuredProducts }) {
+export default function Home({ topRatedProducts }) {
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
-
   const addToCartHandler = async (product) => {
-    const existItem = cart.cartItems.find((x) => x.slug === product.slug);
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/products/${product._id}`);
-
     if (data.countInStock < quantity) {
-      return toast.error('Sorry. Product is out of stock');
+      toast.error('Sorry. Product is out of stock');
+      return;
     }
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
 
@@ -29,27 +26,27 @@ export default function Home({ products, featuredProducts }) {
   };
 
   return (
-     
-    <Layout title="Home Page">
+    <Layout title="Amazona">
       <Carousel showThumbs={false} autoPlay>
-        {featuredProducts.map((product) => (
-          <div key={product._id}>
-          <Link href={`/product/${product.slug}`} >
-            <a className="flex">
-              <Image src={product.banner} width={300} height={200} alt={product.name} />
-            </a>
-          </Link>
+        <div>
+          <img src="/images/banner1.jpg" />
         </div>
-        ))}
+        <div>
+          <img src="/images/banner2.jpg" />
+        </div>
       </Carousel>
-    <h2 className="h2 my-4">Latest Products</h2>
+      
+
+
+      <h2 className="my-3 text-2xl">Featured Products</h2>
+      {topRatedProducts.length === 0 && <div>No Product Found</div>}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
-        {products.map((product) => (
+        {topRatedProducts.map((product) => (
           <ProductItem
+            key={product._id}
             product={product}
-            key={product.slug}
             addToCartHandler={addToCartHandler}
-          ></ProductItem>
+          />
         ))}
       </div>
     </Layout>
@@ -58,12 +55,25 @@ export default function Home({ products, featuredProducts }) {
 
 export async function getServerSideProps() {
   await db.connect();
-  const products = await Product.find().lean();
-  const featuredProducts = await Product.find({ isFeatured: true }).lean();
+  const featuredProductsDocs = await Product.find(
+    { isFeatured: true },
+    '-reviews'
+  )
+    .lean()
+    .limit(3);
+  const topRatedProductsDocs = await Product.find({}, '-reviews')
+    .lean()
+    .sort({
+      rating: -1,
+    })
+    .limit(6);
+  await db.disconnect();
   return {
     props: {
-      featuredProducts: featuredProducts.map(db.convertDocToObj),
-      products: products.map(db.convertDocToObj),
+      featuredProducts: featuredProductsDocs.map(db.convertDocToObj),
+      topRatedProducts: topRatedProductsDocs.map(db.convertDocToObj),
     },
   };
 }
+
+// Home.auth = { adminOnly: true };

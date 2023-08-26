@@ -6,10 +6,11 @@ import Image from 'next/image';
 export default function ProductItem({ product, addToCartHandler }) {
   return (
     <div className="card">
+      <Link href={'/about'}>test</Link>
       <Link href={`/product/${product.slug}`}>
 
         <Image
-                src={product.banner}
+                src={product.image}
                 alt={product.name}
                 width={500}
                 height={300}

@@ -2,11 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'example.com'],
+    domains: ['res.cloudinary.com'],
   },
-  // eslint: {
- //   ignoreDuringBuilds: true,
-  // },
 };
 
 module.exports = nextConfig;
