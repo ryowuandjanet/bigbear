@@ -63,11 +63,15 @@ export default function AdminProductEditScreen() {
         setValue('name', data.name);
         setValue('slug', data.slug);
         setValue('price', data.price);
+        setValue('disPrice', data.disPrice);
         setValue('image', data.image);
         setValue('category', data.category);
         setValue('brand', data.brand);
         setValue('countInStock', data.countInStock);
         setValue('description', data.description);
+        setValue('description1', data.description1);
+        setValue('description2', data.description2);
+        setValue('description3', data.description3);
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
@@ -106,11 +110,15 @@ export default function AdminProductEditScreen() {
     name,
     slug,
     price,
+    disPrice,
     category,
     image,
     brand,
     countInStock,
     description,
+    description1,
+    description2,
+    description3,
   }) => {
     try {
       dispatch({ type: 'UPDATE_REQUEST' });
@@ -118,14 +126,18 @@ export default function AdminProductEditScreen() {
         name,
         slug,
         price,
+        disPrice,
         category,
         image,
         brand,
         countInStock,
         description,
+        description1,
+        description2,
+        description3,
       });
       dispatch({ type: 'UPDATE_SUCCESS' });
-      toast.success('Product updated successfully');
+      toast.success('產品更新成功');
       router.push('/admin/products');
     } catch (err) {
       dispatch({ type: 'UPDATE_FAIL', payload: getError(err) });
@@ -195,7 +207,7 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="price">單價</label>
+                <label htmlFor="price">原價</label>
                 <input
                   type="text"
                   className="w-full"
@@ -206,6 +218,20 @@ export default function AdminProductEditScreen() {
                 />
                 {errors.price && (
                   <div className="text-red-500">{errors.price.message}</div>
+                )}
+              </div>
+              <div className="mb-4">
+                <label htmlFor="disPrice">優惠價格</label>
+                <input
+                  type="text"
+                  className="w-full"
+                  id="disPrice"
+                  {...register('disPrice', {
+                    required: '優惠價格',
+                  })}
+                />
+                {errors.disPrice && (
+                  <div className="text-red-500">{errors.disPrice.message}</div>
                 )}
               </div>
               <div className="mb-4">
@@ -234,7 +260,7 @@ export default function AdminProductEditScreen() {
                 {loadingUpload && <div>上傳中....</div>}
               </div>
               <div className="mb-4">
-                <label htmlFor="category">目錄(分類)</label>
+                <label htmlFor="category">目錄(大分類)</label>
                 <input
                   type="text"
                   className="w-full"
@@ -248,13 +274,13 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="brand">品牌</label>
+                <label htmlFor="brand">目錄(小分類)</label>
                 <input
                   type="text"
                   className="w-full"
                   id="brand"
                   {...register('brand', {
-                    required: '請輸入品牌',
+                    required: '請輸入目錄(小分類)',
                   })}
                 />
                 {errors.brand && (
@@ -278,7 +304,7 @@ export default function AdminProductEditScreen() {
                 )}
               </div>
               <div className="mb-4">
-                <label htmlFor="countInStock">商品描述</label>
+                <label htmlFor="description">商品描述</label>
                 <input
                   type="text"
                   className="w-full"
@@ -290,6 +316,54 @@ export default function AdminProductEditScreen() {
                 {errors.description && (
                   <div className="text-red-500">
                     {errors.description.message}
+                  </div>
+                )}
+              </div>
+              <div className="mb-4">
+                <label htmlFor="description1">重點描述(紅字部份)</label>
+                <input
+                  type="text"
+                  className="w-full"
+                  id="description1"
+                  {...register('description1', {
+                    required: '請輸入重點描述(紅字部份)',
+                  })}
+                />
+                {errors.description1 && (
+                  <div className="text-red-500">
+                    {errors.description1.message}
+                  </div>
+                )}
+              </div>
+              <div className="mb-4">
+                <label htmlFor="description2">提醒描述(藍字部份)</label>
+                <input
+                  type="text"
+                  className="w-full"
+                  id="description2"
+                  {...register('description2', {
+                    required: '請輸入重點描述(紅字部份)',
+                  })}
+                />
+                {errors.description2 && (
+                  <div className="text-red-500">
+                    {errors.description2.message}
+                  </div>
+                )}
+              </div>
+              <div className="mb-4">
+                <label htmlFor="description3">一般描述(黑字部份)</label>
+                <input
+                  type="text"
+                  className="w-full"
+                  id="description3"
+                  {...register('description3', {
+                    required: '請輸入重點描述(紅字部份)',
+                  })}
+                />
+                {errors.description3 && (
+                  <div className="text-red-500">
+                    {errors.description3.message}
                   </div>
                 )}
               </div>

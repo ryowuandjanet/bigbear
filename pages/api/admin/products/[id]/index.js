@@ -31,11 +31,15 @@ const putHandler = async (req, res) => {
     product.name = req.body.name;
     product.slug = req.body.slug;
     product.price = req.body.price;
+    product.disPrice = req.body.disPrice;
     product.category = req.body.category;
     product.image = req.body.image;
     product.brand = req.body.brand;
     product.countInStock = req.body.countInStock;
     product.description = req.body.description;
+    product.description1 = req.body.description1;
+    product.description2 = req.body.description2;
+    product.description3 = req.body.description3;
     await product.save();
     await db.disconnect();
     res.send({ message: '產品更新成功' });

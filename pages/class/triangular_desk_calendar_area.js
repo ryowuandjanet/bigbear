@@ -32,6 +32,7 @@ export default function Tdca({ products }) {
           <HorizontalCardItem
             key={product._id}
             product={product}
+            style={{ maxHeight: '100%' }}
             addToCartHandler={addToCartHandler}
           />
         ))}

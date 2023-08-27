@@ -18,14 +18,18 @@ const handler = async (req, res) => {
 const postHandler = async (req, res) => {
   await db.connect();
   const newProduct = new Product({
-    name: 'sample name',
+    name: '商品名稱',
     slug: 'sample-name-' + Math.random(),
     image: '/images/shirt1.jpg',
     price: 0,
-    category: 'sample category',
-    brand: 'sample brand',
+    disPrice: 0,
+    category: '大分類',
+    brand: '小分類',
     countInStock: 0,
-    description: 'sample description',
+    description: '商品描述',
+    description1: '重點描述(紅字部份)',
+    description2: '提醒描述(藍字部份)',
+    description3: '一般描述(黑字部份)',
     rating: 0,
     numReviews: 0,
   });
