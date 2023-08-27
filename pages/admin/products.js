@@ -51,11 +51,7 @@ export default function AdminProdcutsScreen() {
     }
     try {
       dispatch({ type: 'CREATE_REQUEST' });
-      const { data } = await axios.post(`/api/admin/products`,{
-        headers: {
-          'Authorization': 'Bearer ' + token
-        }
-      });
+      const { data } = await axios.post(`/api/admin/products`);
       dispatch({ type: 'CREATE_SUCCESS' });
       toast.success('Product created successfully');
       router.push(`/admin/product/${data.product._id}`);
@@ -68,11 +64,7 @@ export default function AdminProdcutsScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: 'FETCH_REQUEST' });
-        const { data } = await axios.get(`/api/admin/products`,{
-          headers: {
-            'Authorization': 'Bearer ' + token
-          }
-        });
+        const { data } = await axios.get(`/api/admin/products`);
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
@@ -92,11 +84,7 @@ export default function AdminProdcutsScreen() {
     }
     try {
       dispatch({ type: 'DELETE_REQUEST' });
-      await axios.delete(`/api/admin/products/${productId}`,{
-        headers: {
-          'Authorization': 'Bearer ' + token
-        }
-      });
+      await axios.delete(`/api/admin/products/${productId}`);
       dispatch({ type: 'DELETE_SUCCESS' });
       toast.success('Product deleted successfully');
     } catch (err) {
