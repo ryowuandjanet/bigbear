@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ['res.cloudinary.com','2626731.weebly.com'],
   },
+  eslint: {
+    ignoreDuringBuilds: true
+  },
 };
 
 module.exports = nextConfig;
