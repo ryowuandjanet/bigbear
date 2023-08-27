@@ -51,7 +51,11 @@ export default function AdminProdcutsScreen() {
     }
     try {
       dispatch({ type: 'CREATE_REQUEST' });
-      const { data } = await axios.post(`/api/admin/products`);
+      const { data } = await axios.post(`/api/admin/products`,{
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      });
       dispatch({ type: 'CREATE_SUCCESS' });
       toast.success('Product created successfully');
       router.push(`/admin/product/${data.product._id}`);
@@ -88,7 +92,11 @@ export default function AdminProdcutsScreen() {
     }
     try {
       dispatch({ type: 'DELETE_REQUEST' });
-      await axios.delete(`/api/admin/products/${productId}`);
+      await axios.delete(`/api/admin/products/${productId}`,{
+        headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      });
       dispatch({ type: 'DELETE_SUCCESS' });
       toast.success('Product deleted successfully');
     } catch (err) {
