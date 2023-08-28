@@ -46,7 +46,7 @@ export default function AdminProdcutsScreen() {
   });
 
   const createHandler = async () => {
-    if (!window.confirm('Are you sure?')) {
+    if (!window.confirm('你確定嗎?')) {
       return;
     }
     try {

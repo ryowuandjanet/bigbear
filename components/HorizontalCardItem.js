@@ -15,6 +15,7 @@ export default function HorizontalCardItem({ product, addToCartHandler }) {
     setOverlayVisible(false);
   };
 
+
   return (
     <>
       <div className="bg-white shadow-md rounded-lg p-4 flex flex-col md:flex-row">
@@ -33,9 +34,10 @@ export default function HorizontalCardItem({ product, addToCartHandler }) {
           <p className="text-red-600 mb-4">{product.description1}</p>
           <p className="text-blue-600 mb-4">{product.description2}</p>
           <p className="text-gray-600 mb-4">{product.description3}</p>
+         
           <div className="flex items-center mb-4">
             
-            <svg className="w-6 h-6 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <svg className="w-6 h-6 text-gray-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
             <p className="text-sm text-gray-500">{product.brand} - $ {product.price}</p>
           </div>
           <div className="flex justify-between">

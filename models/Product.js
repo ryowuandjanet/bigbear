@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema(
     description: { type: String, required: false },
     description1: { type: String, required: false },
     description2: { type: String, required: false },
-    description3: { type: String, required: false },
+    description3: { type: String, required: false, get: (val) => val, set: (val) => val },
     isFeatured: { type: Boolean, default: false },
     banner: String,
   },

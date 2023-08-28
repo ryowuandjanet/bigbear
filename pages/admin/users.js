@@ -53,7 +53,7 @@ function AdminUsersScreen() {
   }, [successDelete]);
 
   const deleteHandler = async (userId) => {
-    if (!window.confirm('Are you sure?')) {
+    if (!window.confirm('你確定嗎?')) {
       return;
     }
     try {
